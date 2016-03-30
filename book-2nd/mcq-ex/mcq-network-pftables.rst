@@ -129,17 +129,17 @@ Port forwarding tables are used in tree-shaped networks to automatically build t
 
    .. positive::    
 
-      Upon reception of this packet, the port forwarding table of `R3` will be updated as :
+      Upon reception of this packet, the port forwarding table of `R1` will be updated as :
 
       ======  ========
       Dest.   OutPort 
       ======  ========
-      A       N 
+      A       W 
       B       E 
       ======  ========
 
 
-   .. positive::    
+   .. negative::    
 
       Upon reception of this packet, the port forwarding table of `R1` will be updated as :
 
@@ -150,7 +150,7 @@ Port forwarding tables are used in tree-shaped networks to automatically build t
       B       S 
       ======  ========
 
-   .. negative::    
+   .. positive::    
 
       Upon reception of this packet, the port forwarding table of `R2` will be updated as :
 
@@ -158,14 +158,12 @@ Port forwarding tables are used in tree-shaped networks to automatically build t
       Dest.   OutPort 
       ======  ========
       A       W 
-      B       W 
+      B       S 
       ======  ========
-
-      .. comment:: When `R1` receives the packet sent by `B` towards `A`, it forwards it directly to `A`. This implies that `R2` will not receive this packet and thus cannot update its port forwarding table. 
 
    .. positive::    
 
-      The port forwarding table of `R2` will never be updated with information about destination `B`. 
+      The port forwarding table of `R3` will never be updated with information about destination `B`. 
 
    .. negative::    
 
@@ -177,3 +175,5 @@ Port forwarding tables are used in tree-shaped networks to automatically build t
       A       N 
       B       N 
       ======  ========
+
+      .. comment:: When `R2` receives the packet sent by `B` towards `A`, it forwards it directly to `R1`. This implies that `R3` will not receive this packet and thus cannot update its port forwarding table. 
